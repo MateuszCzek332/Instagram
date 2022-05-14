@@ -22,7 +22,7 @@ POST http://localhost:3000/api/user/register HTTP/1.1
 {    
    "name": "name",
    "lastName": "lastName",
-   "email":"mateusz.czek332@gmail.pl",
+   "email":"mateusz.czek332@gmail.com",
    "password":"pass"
 }
 

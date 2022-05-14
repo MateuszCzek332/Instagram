@@ -1,5 +1,6 @@
 const model = require("./model")
 const nodemailer = require("nodemailer")
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 const config = {
     service: 'Yahoo',
@@ -9,14 +10,21 @@ const config = {
     }
 }
 
+const encryptPass = async (password) => {
+
+    let encryptedPassword = await bcrypt.hash(password, 10);
+    return encryptedPassword;
+}
+
 module.exports = {
-    register: (data) => {
+    register: async (data)  => {
         const transporter = nodemailer.createTransport(config)
         console.log(config)
         data = JSON.parse(data)
         console.log(data)
 
-        let newUser = new model.User(data.name, data.lastName, data.email, encryptPass(data.password))
+        let userPass = await encryptPass(data.password)
+        let newUser = new model.User(data.name, data.lastName, data.email, userPass)
 
         transporter.sendMail({
             from: "mateusz.czekaj332@yahoo.com",
