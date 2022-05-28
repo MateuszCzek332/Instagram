@@ -20,9 +20,26 @@ nazwa_albumu
 POST http://localhost:3000/api/user/register HTTP/1.1
 
 {    
-   "name": "name",
+   "name": "nameXDDD",
    "lastName": "lastName",
    "email":"mateusz.czek332@gmail.com",
    "password":"pass"
 }
 
+### Logowanie 
+POST http://localhost:3000/api/user/login HTTP/1.1
+
+{
+  "email":"mateusz.czek332@gmail.com",
+  "password":"pass"
+}
+
+### Potwierdzenie rejestracji
+
+POST http://localhost:3000/api/user/confirm/ HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoibWF0ZXVzei5jemVrMzMyQGdtYWlsLmNvbSIsImlhdCI6MTY1Mzc1MDQ2MywiZXhwIjoxNjUzNzU0MDYzfQ.VVQFRfq9SCJTH4Z2tGuNIdMpGFZMbQRja75SThusNAs
+
+
+###
+
+GET http://localhost:3000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoibWF0ZXVzei5jemVrMzMyQGdtYWlsLmNvbSIsImlhdCI6MTY1Mzc1MTcyMywiZXhwIjoxNjUzNzU1MzIzfQ.Fa4nR8IRGczxrM2Y6Cp8cg-fsvY9-db3e4ZG4G1L_0E  HTTP/1.1
