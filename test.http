@@ -20,7 +20,7 @@ nazwa_albumu
 POST http://localhost:3000/api/user/register HTTP/1.1
 
 {    
-   "name": "nameXDDD",
+   "name": "name1234",
    "lastName": "lastName",
    "email":"mateusz.czek332@gmail.com",
    "password":"pass"
@@ -28,6 +28,7 @@ POST http://localhost:3000/api/user/register HTTP/1.1
 
 ### Logowanie 
 POST http://localhost:3000/api/user/login HTTP/1.1
+content-type: application/json
 
 {
   "email":"mateusz.czek332@gmail.com",
@@ -37,9 +38,29 @@ POST http://localhost:3000/api/user/login HTTP/1.1
 ### Potwierdzenie rejestracji
 
 POST http://localhost:3000/api/user/confirm/ HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoibWF0ZXVzei5jemVrMzMyQGdtYWlsLmNvbSIsImlhdCI6MTY1Mzc1MDQ2MywiZXhwIjoxNjUzNzU0MDYzfQ.VVQFRfq9SCJTH4Z2tGuNIdMpGFZMbQRja75SThusNAs
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoibWF0ZXVzei5jemVrMzMyQGdtYWlsLmNvbSIsImlhdCI6MTY1MzgzMDk3OSwiZXhwIjoxNjUzODM0NTc5fQ.Vn7z0RpVu7UqwskjUOlMZ7NprJzpezWYhcXUapMNX1A
 
 
-###
+### Potwierdzenie rejestracji przez link
 
-GET http://localhost:3000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoibWF0ZXVzei5jemVrMzMyQGdtYWlsLmNvbSIsImlhdCI6MTY1Mzc1MTcyMywiZXhwIjoxNjUzNzU1MzIzfQ.Fa4nR8IRGczxrM2Y6Cp8cg-fsvY9-db3e4ZG4G1L_0E  HTTP/1.1
+GET http://localhost:3000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoibWF0ZXVzei5jemVrMzMyQGdtYWlsLmNvbSIsImlhdCI6MTY1MzgxNTgzMCwiZXhwIjoxNjUzODE5NDMwfQ.RzkE6OregZ_Ws6IA8rUIxCBpZhhBTlPDObJxFOiUqzQ  HTTP/1.1
+
+### Pobranie danych o uzytkowniku 
+
+GET http://localhost:3000/api/user HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTM4MzE4MzAsImV4cCI6MTY1MzkxODIzMH0.vZxWofad_uv6wduh2eB6sSlu37suyaziQAuzq_Ed5Ys
+
+### Zmiana danych user'a
+
+PATCH http://localhost:3000/api/user HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTM4MzE4MzAsImV4cCI6MTY1MzkxODIzMH0.vZxWofad_uv6wduh2eB6sSlu37suyaziQAuzq_Ed5Ys
+
+{
+  "name": "newName",
+  "lastName": "newLastName"
+}
+
+### Loguot
+
+GET http://localhost:3000/api/user/logout HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTM4MzE4MzAsImV4cCI6MTY1MzkxODIzMH0.vZxWofad_uv6wduh2eB6sSlu37suyaziQAuzq_Ed5Ys

@@ -9,5 +9,6 @@ class User {
 }
 
 let users = []
+let badTokens = []
 
-module.exports = { User, users };
+module.exports = { User, users, badTokens };
