@@ -2,6 +2,7 @@ const http = require('http');
 const imageRouter = require("./app/imageRouter")
 const tagsRouter = require("./app/tagsRouter")
 const usersRouter = require("./app/usersRouter")
+const filtersRouter = require("./app/filtersRouter")
 require('dotenv').config();
 
 http.createServer(async (req, res) => {
@@ -12,11 +13,13 @@ http.createServer(async (req, res) => {
     }// tags
     else if (req.url.search("/api/tags") != -1) {
         await tagsRouter(req, res)
-    }
-    //users
+    }// users
     else if (req.url.search("/api/user") != -1) {
         await usersRouter(req, res)
-    }
+    }// filtry
+    else if (req.url.search("/api/filters") != -1) {
+        await filtersRouter(req, res)
+     }
  
 })
 .listen(process.env.APP_PORT, () => console.log(`listen on ${process.env.APP_PORT}`))

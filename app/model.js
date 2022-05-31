@@ -31,6 +31,15 @@ class Image {
         })
         this.lastChange = status
     }
+
+    filter = ( status, url )=>{
+        this.history.push({
+            status: status,
+            lastModifiedDate: Date.now(),
+            url: url
+        })
+        this.lastChange = status
+    }
 }
 class Tag{
     constructor(id, name, popularity){
@@ -68,8 +77,32 @@ let tags = [
     },
 ]
 
+let filtersOptions = [
+    {
+      id: 1,
+      name: "metadata",
+      description: "dostępne informacje o zdjęciu",
+      method: "get",
+      args: "bez argumentów"
+    },
+    {
+      id: 2,
+      name: "rotate",
+      description: "obrót w stopniach w prawo, ujemna wartość w lewo",
+      method: "patch",
+      args: "id obrazka, wartość x = 0-360"
+    },
+    {
+      id: 3,
+      name: "resize",
+      description: "obrót w stopniach w prawo, ujemna wartość w lewo",
+      method: "patch",
+      args: "id obrazka, w, h"
+    }
+  ]
+
 let users = []
 let photos = []
 let badTokens = []
 
-module.exports = { User, Image, Tag, tags, photos, users, badTokens };
+module.exports = { User, Image, Tag, tags, photos, users, badTokens, filtersOptions };

@@ -21,7 +21,7 @@ content-type: application/json
 ### Potwierdzenie rejestracji
 
 POST http://localhost:3000/api/user/confirm/ HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoibWF0ZXVzei5jemVrMzMyQGdtYWlsLmNvbSIsImlhdCI6MTY1NDAxMTE3NSwiZXhwIjoxNjU0MDE0Nzc1fQ.XQ7PZb7RT7zVVbghygxkEn_6DHSvofKJEiIPFx25pI4
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoibWF0ZXVzei5jemVrMzMyQGdtYWlsLmNvbSIsImlhdCI6MTY1NDAyNTk1MSwiZXhwIjoxNjU0MDI5NTUxfQ.LscT5eKNnKHKQxInKVlkXgXVFITEsM08sz7OALvu3iU
 
 
 ### Potwierdzenie rejestracji przez link
@@ -52,7 +52,7 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c
 ### Post obrazka
 
 POST http://localhost:3000/api/photos HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTM5Mzg0MTUsImV4cCI6MTY1NDAyNDgxNX0.U4qISv2Zz-hD9ayrMmmHAzRB0xiG2BAQ1J6z7nRhgCg
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMjU5NjIsImV4cCI6MTY1NDExMjM2Mn0.39PhOfWFgBr363R6Ls3fBYo4Q2qktp6vQ0d3TOLFjx4
 Content-Type: multipart/form-data; boundary=----FormBoundary1234
 
 ------FormBoundary1234
@@ -66,11 +66,11 @@ Content-Type: image/png
 ### Get wszystkich zdjec
 
 GET http://localhost:3000/api/photos HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMTExOTEsImV4cCI6MTY1NDA5NzU5MX0.5XQVMWlN0IjXh-suonIEJjhyzLOwm5YhR2XH1uYiI8U
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMjU5NjIsImV4cCI6MTY1NDExMjM2Mn0.39PhOfWFgBr363R6Ls3fBYo4Q2qktp6vQ0d3TOLFjx4
 
 ### Get jednego zdjecia 
 
-GET http://localhost:3000/api/photos/1654018910362 HTTP/1.1
+GET http://localhost:3000/api/photos/1654027870844 HTTP/1.1
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMTExOTEsImV4cCI6MTY1NDA5NzU5MX0.5XQVMWlN0IjXh-suonIEJjhyzLOwm5YhR2XH1uYiI8U
 
 ### Patch jsona
@@ -143,3 +143,26 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c
 
 GET http://localhost:3000/api/photos/tags/1654018910362 HTTP/1.1
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMTExOTEsImV4cCI6MTY1NDA5NzU5MX0.5XQVMWlN0IjXh-suonIEJjhyzLOwm5YhR2XH1uYiI8U
+
+
+### FILTRY 
+### Get wszystkich opcji 
+
+GET http://localhost:3000/api/filters HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMTExOTEsImV4cCI6MTY1NDA5NzU5MX0.5XQVMWlN0IjXh-suonIEJjhyzLOwm5YhR2XH1uYiI8U
+
+
+### Get danych o zdjeciu
+
+GET http://localhost:3000/api/filters/metadata/1654024225156 HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMTExOTEsImV4cCI6MTY1NDA5NzU5MX0.5XQVMWlN0IjXh-suonIEJjhyzLOwm5YhR2XH1uYiI8U
+
+### Edycja zdjęcia
+
+PATCH http://localhost:3000/api/filters HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMTExOTEsImV4cCI6MTY1NDA5NzU5MX0.5XQVMWlN0IjXh-suonIEJjhyzLOwm5YhR2XH1uYiI8U
+
+{
+  "id":1654027870844,
+  "filter": "grayscale"
+}
