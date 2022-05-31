@@ -83,5 +83,67 @@ module.exports = {
         })
         return data;
     },
+    addTag: async (token, id, tag) => {
+        tag = JSON.parse(tag)
+        for(let i = 0; i<model.badTokens.length; i++)
+            if(model.badTokens[i] == token)
+                return false
+        let data
+        await jwt.verify(token, process.env.ACCESS_TOKEN, (err, user) => {
+            if(err){
+                console.log(err)
+                return false
+            }
+            for(let i =0 ; i<model.photos.length; i++)
+                if(id == model.photos[i].id){
+                    model.photos[i].tags.push(tag)
+                    data = model.photos[i]
+                    break;
+                }
+
+        })
+        return data;
+    },
+    addTags: async (token, id, tags) => {
+        tags = JSON.parse(tags)
+        for(let i = 0; i<model.badTokens.length; i++)
+            if(model.badTokens[i] == token)
+                return false
+        let data
+        await jwt.verify(token, process.env.ACCESS_TOKEN, (err, user) => {
+            if(err){
+                console.log(err)
+                return false
+            }
+            for(let i =0 ; i<model.photos.length; i++)
+                if(id == model.photos[i].id){
+                    for(let j = 0; j<tags.length; j++)
+                        model.photos[i].tags.push(tags[j])
+                    data = model.photos[i]
+                    break;
+                }
+
+        })
+        return data;
+    },
+    getPhotoTags: async (token, id) => {
+        for(let i = 0; i<model.badTokens.length; i++)
+            if(model.badTokens[i] == token)
+                return false
+
+        let data
+        await jwt.verify(token, process.env.ACCESS_TOKEN, (err, user) => {
+            if(err)
+                return false
+
+            for(let i =0 ; i<model.photos.length; i++)
+                if(id == model.photos[i].id){
+                    data = model.photos[i].tags
+                    break;
+                }
+
+        })
+        return data;
+    }
 
 }

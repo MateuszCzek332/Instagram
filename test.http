@@ -70,7 +70,7 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c
 
 ### Get jednego zdjecia 
 
-GET http://localhost:3000/api/photos/1654011305634 HTTP/1.1
+GET http://localhost:3000/api/photos/1654018910362 HTTP/1.1
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMTExOTEsImV4cCI6MTY1NDA5NzU5MX0.5XQVMWlN0IjXh-suonIEJjhyzLOwm5YhR2XH1uYiI8U
 
 ### Patch jsona
@@ -108,3 +108,38 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c
   "name":"#nowytag",
   "popularity": 1000000    
 }
+
+### Interagcja tagów i zdjec
+### Dodawanie pojedynczego taga do zdjecia 
+
+PATCH http://localhost:3000/api/photos/tags/1654018910362 HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMTExOTEsImV4cCI6MTY1NDA5NzU5MX0.5XQVMWlN0IjXh-suonIEJjhyzLOwm5YhR2XH1uYiI8U
+
+{    
+  "id": 99,
+  "name": "#XDDDDD",
+  "popularity": 999999
+}
+
+### Dodawanie pojedynczego taga do zdjecia 
+
+PATCH http://localhost:3000/api/photos/tags/mass/1654018910362 HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMTExOTEsImV4cCI6MTY1NDA5NzU5MX0.5XQVMWlN0IjXh-suonIEJjhyzLOwm5YhR2XH1uYiI8U
+
+[
+  {
+    "id": 0,
+    "name": "#love",
+    "popularity": 242
+  },
+  {
+    "id": 1,
+    "name": "#instagood",
+    "popularity": 433
+  }
+]
+
+### Get tagow podanego zdjecia 
+
+GET http://localhost:3000/api/photos/tags/1654018910362 HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMTExOTEsImV4cCI6MTY1NDA5NzU5MX0.5XQVMWlN0IjXh-suonIEJjhyzLOwm5YhR2XH1uYiI8U
