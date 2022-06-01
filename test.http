@@ -48,6 +48,20 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c
 GET http://localhost:3000/api/user/logout HTTP/1.1
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTM4MzE4MzAsImV4cCI6MTY1MzkxODIzMH0.vZxWofad_uv6wduh2eB6sSlu37suyaziQAuzq_Ed5Ys
 
+### Post profilowego
+
+POST http://localhost:3000/api/user/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hdGV1c3ouY3plazMzMkBnbWFpbC5jb20iLCJpYXQiOjE2NTQwMjU5NjIsImV4cCI6MTY1NDExMjM2Mn0.39PhOfWFgBr363R6Ls3fBYo4Q2qktp6vQ0d3TOLFjx4
+Content-Type: multipart/form-data; boundary=----FormBoundary1234
+
+------FormBoundary1234
+Content-Disposition: form-data; name="file"; filename="input.PNG"
+Content-Type: image/png
+
+< ./input.PNG
+
+------FormBoundary1234
+
 ### CZĘŚĆ 1 - zdjecia 
 ### Post obrazka
 

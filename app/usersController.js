@@ -1,7 +1,10 @@
 const model = require("./model")
+const jsonController = require("./jsonController")
 const nodemailer = require("nodemailer")
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const formidable = require('formidable');
+const fs = require("fs")
 require('dotenv').config();
 
 const config = {
@@ -35,14 +38,14 @@ module.exports = {
 
         let token =  jwt.sign({mail: data.email}, process.env.ACCESS_TOKEN, {expiresIn: "1h"})
 
-        // let link = "http://localhost:3000/api/user/confirm/" + token
-        // transporter.sendMail({
-        //     from: "mateusz.czekaj332@yahoo.com",
-        //     to: newUser.email,
-        //     subject: "weryfikacja konta",
-        //     text: "Klliknij w link aby aktywować konto: \n" + link,
-        //     //html: "tekst"
-        // });
+        let link = "http://localhost:3000/api/user/confirm/" + token
+        transporter.sendMail({
+            from: "mateusz.czekaj332@yahoo.com",
+            to: newUser.email,
+            subject: "weryfikacja konta",
+            text: "Klliknij w link aby aktywować konto: \n" + link,
+            //html: "tekst"
+        });
 
         return token;
     },
@@ -115,6 +118,42 @@ module.exports = {
                 }
 
         })
+    },
+    profile: async (token, req)  => {
+
+        for(let i = 0; i<model.badTokens.length; i++)
+            if(model.badTokens[i] == token)
+                return false
+
+        await jwt.verify(token, process.env.ACCESS_TOKEN, async (err, user) => {
+            if(err)
+                return false
+
+            const form = formidable({});
+            form.uploadDir = "upload/"    
+            form.keepExtensions = true;
+
+            form.parse(req, function (err, fields, files) {
+                let fileName = files.file.path.split("\\")[1];
+                let url = "upload/" +  user.email + "/profile.PNG"
+                if(fs.existsSync("./upload/" + user.email) ){
+                    fs.rename("upload/" + fileName, url, (err) => {
+                        if (err) throw err
+                    })
+                }
+                else{
+                    fs.mkdir("./upload/" + user.email, (err) => {
+                        if (err) throw err
+                        fs.rename("upload/" + fileName, url, (err) => {
+                            if (err) throw err
+                        })
+                    })
+                }
+                jsonController.add(files, user.email, url)
+            })
+
+        })
+
     },
 
 }

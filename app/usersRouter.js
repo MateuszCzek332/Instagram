@@ -80,7 +80,19 @@ const router = async (req, res) => {
         res.writeHead(201, { "Content-Type": "application/json" });
         res.end("eMail poprawnie zmieniony")
     }
+    else if( req.url == "/api/user/profile" && req.method == "POST"){
+        let token
+        if(req.headers.authorization.startsWith("Bearer"))
+            token = req.headers.authorization.split(" ")[1]
+        let data = await usersController.profile(token, req)
+        if(data == false){
+            res.writeHead(409, { "Content-Type": "application/json" });
+            res.end("Blad, zaloguj sie ponownie")
+        }
+        res.writeHead(201, { "Content-Type": "application/json" });
+        res.end("Plik przesłany")
+    }
 
 }
 
-module.exports = router
+module.exports = router;

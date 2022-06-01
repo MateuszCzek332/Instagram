@@ -40,7 +40,7 @@ module.exports = {
             })
 
         })
-
+ 
     },
     deleteFile: async (url)  => {
 
